@@ -1,0 +1,1 @@
+//'/movies/:movieId' - komponent MovieDetails, strona ze szczegółowymi informacjami o filmie.

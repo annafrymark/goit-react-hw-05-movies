@@ -1,0 +1,1 @@
+//'/movies' - komponent Movies, strona wyszukiwania filmów po słowie kluczu.
