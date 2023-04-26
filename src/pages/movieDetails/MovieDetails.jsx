@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { fetchMoviesWithId } from 'utils/GetInfo';
 //import { useLocation } from 'react-router-dom';
-import css from './MovieDetails.module.css'
+import css from './MovieDetails.module.css';
 
 const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState({
@@ -22,7 +22,9 @@ const MovieDetails = () => {
       let movieDetails = await fetchMoviesWithId(movieId);
       console.log(movieDetails);
       setMovieDetails(movieDetails);
-      setImageUrl(`${movieDetails.poster_path}`);
+      setImageUrl(
+        `https://image.tmdb.org/t/p/w300/${movieDetails.poster_path}`
+      );
     } catch (error) {
       setError(error);
     }
@@ -46,8 +48,27 @@ const MovieDetails = () => {
           <h3>
             {movieDetails.title} ({movieDetails.release_date.slice(0, 4)})
           </h3>
+          <p>User score: {movieDetails.vote_average}</p>
+          <h4>Overview</h4>
+          <p>{movieDetails.overview}</p>
+          <h4>Genres</h4>
+          <p>
+            {movieDetails.genres.map(genre => (
+              <span key={genre.id}>{genre.name}</span>
+            ))}
+          </p>
         </div>
       </div>
+      <h4>Additional information</h4>
+      <ul>
+        <li>
+          <Link to="cast">Cast</Link>
+        </li>
+        <li>
+          <Link to="reviews">Reviews</Link>
+        </li>
+      </ul>
+      <Outlet/>
     </div>
   );
 };
