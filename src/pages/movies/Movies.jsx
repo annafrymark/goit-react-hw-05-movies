@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { fetchMoviesWithQuery } from 'utils/GetInfo';
 import { Link, useSearchParams } from 'react-router-dom';
+import css from './Movies.module.css';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
-  // const [inputValue, setInputValue] = useState('');
   const [error, setError] = useState(null);
 
   const searchMovies = async () => {
@@ -13,7 +13,6 @@ const Movies = () => {
       let searchedMovies = await fetchMoviesWithQuery(
         searchParams.get('query')
       );
-      console.log(searchedMovies);
       setMovies(searchedMovies);
     } catch (error) {
       setError(error);
@@ -24,13 +23,8 @@ const Movies = () => {
     searchMovies();
   }, [searchParams]);
 
-  // const handleChange = event => {
-  //   setInputValue(event.target.value);
-  // };
-
   const handleSubmit = event => {
     event.preventDefault();
-    console.log(event.target[0].value);
     const searchInput = event.target[0].value;
     if (searchInput !== '') setSearchParams({ query: searchInput });
     else setSearchParams({});
@@ -39,7 +33,7 @@ const Movies = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form className={css.form} onSubmit={handleSubmit}>
         <input
           // value={inputValue}
           // onChange={handleChange}

@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { fetchMoviesWithId } from 'utils/GetInfo';
-//import { useLocation } from 'react-router-dom';
 import css from './MovieDetails.module.css';
 
 const MovieDetails = () => {
@@ -20,7 +19,6 @@ const MovieDetails = () => {
   const searchMovieDetails = async () => {
     try {
       let movieDetails = await fetchMoviesWithId(movieId);
-      console.log(movieDetails);
       setMovieDetails(movieDetails);
       setImageUrl(
         `https://image.tmdb.org/t/p/w300/${movieDetails.poster_path}`
@@ -34,14 +32,9 @@ const MovieDetails = () => {
     searchMovieDetails();
   }, []);
 
-  // const location = useLocation();
-  // const prevLocation = location.state?.from ?? '/goit-react-hw-05-movies/';
 
   return (
     <div className={css.container}>
-      {/* <Link className={css.link} to={prevLocation}>
-        Go back
-      </Link> */}
       <div className={css.movieDetails}>
         <img className={css.poster} src={imageUrl} alt="movie poster" />
         <div>
@@ -77,4 +70,3 @@ const MovieDetails = () => {
 
 export default MovieDetails;
 
-//'/movies/:movieId' - komponent MovieDetails, strona ze szczegółowymi informacjami o filmie.

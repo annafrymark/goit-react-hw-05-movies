@@ -1,0 +1,12 @@
+.container{
+    padding: 20px;
+}
+
+.movieDetails{
+    display: flex;
+    align-items: flex-start;
+}
+
+.poster{
+     padding: 10px;
+}

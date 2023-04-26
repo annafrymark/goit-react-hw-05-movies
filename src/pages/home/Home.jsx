@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { fetchTrendingMovies } from 'utils/GetInfo';
 import { Link } from 'react-router-dom';
+import css from './Home.module.css';
 
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -8,7 +9,6 @@ const Home = () => {
   const getTrendingMovieList = async () => {
     try {
       let movies = await fetchTrendingMovies();
-      // console.log(movies);
       setTrendingMovies(movies);
     } catch (error) {
       setError(error);
@@ -18,20 +18,11 @@ const Home = () => {
   useEffect(() => {
     getTrendingMovieList();
   }, []);
-  // console.log(trendingMovies);
-
-  // const showTrendingMovieList = trendingMovies => {
-  //   trendingMovies.results.forEach(trendingMovie => {
-  //     let title = trendingMovie.title;
-  //     let id = trendingMovie.id;
-  //   });
-  //  };
 
   return (
-    // <div>"HOME "{trendingMovies.length > 0 && trendingMovies[0].title}</div>;
-    <>
-      <h1>Trending Today</h1>
-      {error && <div>{ error.message}</div>}
+    <div className={css.container}>
+      <h1 className={css.title}>Trending Today</h1>
+      {error && <div>{error.message}</div>}
       <ul>
         {trendingMovies.map(movie => (
           <li key={movie.id}>
@@ -39,7 +30,7 @@ const Home = () => {
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 };
 

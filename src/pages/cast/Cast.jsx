@@ -1,4 +1,3 @@
-///movies/:movieId/cast - komponent Cast, informacja o zespole aktorskim. Renderuje się na stronie MovieDetails.
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchCastWithMovieId } from 'utils/GetInfo';
@@ -19,7 +18,6 @@ const Cast = () => {
   const searchMovieCast = async () => {
     try {
       let movieCast = await fetchCastWithMovieId(movieId);
-      console.log(movieCast);
       setCast(movieCast);
     } catch (error) {
       setError(error);
@@ -40,7 +38,10 @@ const Cast = () => {
       <ul>
         {cast.map(actor => (
           <li key={actor.id}>
-            <img src={actor.profile_path} alt="actor photo" />
+            <img
+              src={`https://image.tmdb.org/t/p/w200/${actor.profile_path}`}
+              alt="actor photo"
+            />
             <p>{actor.name}</p>
             <p>Character: {actor.character}</p>
           </li>
