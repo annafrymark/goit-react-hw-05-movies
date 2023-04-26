@@ -30,6 +30,25 @@ export const fetchMoviesWithId = async movieId => {
   const response = await axios.get(
     `/movie/${movieId}?&api_key=${apiKey}&language=en-US`
     );
-    console.log(response);
+    //console.log(response);
   return response.data;
 };
+
+export const fetchCastWithMovieId = async movieId => {
+  const response = await axios.get(
+    `/movie/${movieId}/credits?api_key=${apiKey}&language=en-US`
+  );
+  console.log(response.data.cast);
+  return response.data.cast;
+};
+
+export const fetchReviewWithMovieId = async movieId => {
+  const response = await axios.get(
+    `/movie/${movieId}/reviews?api_key=${apiKey}&language=en-US`
+  );
+  //console.log(response);
+  return response.data;
+};
+
+// https://api.themoviedb.org/3
+// /movie/{ movie_id } /reviews?api_key=<<api_key>>&language=en-US&page=1
