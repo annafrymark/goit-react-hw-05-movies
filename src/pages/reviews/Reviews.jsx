@@ -5,7 +5,7 @@ import { fetchReviewWithMovieId } from 'utils/GetInfo';
 const Reviews = () => {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState([]);
-  const [isLoading, setisLoading] = useState(true);
+
   const [error, setError] = useState(null);
 
   const searchReviews = async () => {
@@ -19,12 +19,7 @@ const Reviews = () => {
 
   useEffect(() => {
     searchReviews();
-    setisLoading(false);
-  }, []);
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  });
 
   return (
     <div>

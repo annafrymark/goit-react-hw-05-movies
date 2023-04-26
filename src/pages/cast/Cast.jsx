@@ -12,7 +12,7 @@ const Cast = () => {
       profile_path: null,
     },
   ]);
-  const [isLoading, setisLoading] = useState(true);
+
   const [error, setError] = useState(null);
 
   const searchMovieCast = async () => {
@@ -26,12 +26,7 @@ const Cast = () => {
 
   useEffect(() => {
     searchMovieCast();
-    setisLoading(false);
-  }, []);
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  });
 
   return (
     <div>
@@ -39,7 +34,11 @@ const Cast = () => {
         {cast.map(actor => (
           <li key={actor.id}>
             <img
-              src={`https://image.tmdb.org/t/p/w200/${actor.profile_path}`}
+              src={
+                actor.profile_path
+                  ? `https://image.tmdb.org/t/p/w200/${actor.profile_path}`
+                  : 'http://tinleychamber.org/wp-content/uploads/2019/01/no-image-available.png'
+              }
               alt="actor photo"
             />
             <p>{actor.name}</p>
