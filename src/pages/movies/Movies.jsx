@@ -8,18 +8,17 @@ const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [error, setError] = useState(null);
 
-  const searchMovies = async () => {
-    try {
-      let searchedMovies = await fetchMoviesWithQuery(
-        searchParams.get('query')
-      );
-      setMovies(searchedMovies);
-    } catch (error) {
-      setError(error);
-    }
-  };
-
   useEffect(() => {
+    const searchMovies = async () => {
+      try {
+        let searchedMovies = await fetchMoviesWithQuery(
+          searchParams.get('query')
+        );
+        setMovies(searchedMovies);
+      } catch (error) {
+        setError(error);
+      }
+    };
     searchMovies();
   }, [searchParams]);
 
