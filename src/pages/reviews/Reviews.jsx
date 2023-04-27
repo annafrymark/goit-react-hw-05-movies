@@ -6,14 +6,12 @@ const Reviews = () => {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState([]);
 
-  const [error, setError] = useState(null);
-
   const searchReviews = async () => {
     try {
       let reviews = await fetchReviewWithMovieId(movieId);
       setReviews(reviews);
     } catch (error) {
-      setError(error);
+      console.log(error);
     }
   };
 

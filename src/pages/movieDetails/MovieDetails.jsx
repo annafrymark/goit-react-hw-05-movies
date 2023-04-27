@@ -14,7 +14,6 @@ const MovieDetails = () => {
   });
   const [imageUrl, setImageUrl] = useState('');
   const { movieId } = useParams();
-  const [error, setError] = useState(null);
 
   const searchMovieDetails = async () => {
     try {
@@ -24,14 +23,13 @@ const MovieDetails = () => {
         `https://image.tmdb.org/t/p/w300/${movieDetails.poster_path}`
       );
     } catch (error) {
-      setError(error);
+      console.log(error);
     }
   };
 
   useEffect(() => {
     searchMovieDetails();
   });
-
 
   return (
     <div className={css.container}>
@@ -69,4 +67,3 @@ const MovieDetails = () => {
 };
 
 export default MovieDetails;
-

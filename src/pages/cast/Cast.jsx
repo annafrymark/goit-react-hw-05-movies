@@ -13,14 +13,12 @@ const Cast = () => {
     },
   ]);
 
-  const [error, setError] = useState(null);
-
   const searchMovieCast = async () => {
     try {
       let movieCast = await fetchCastWithMovieId(movieId);
       setCast(movieCast);
     } catch (error) {
-      setError(error);
+      console.log(error);
     }
   };
 
@@ -39,7 +37,7 @@ const Cast = () => {
                   ? `https://image.tmdb.org/t/p/w200/${actor.profile_path}`
                   : 'http://tinleychamber.org/wp-content/uploads/2019/01/no-image-available.png'
               }
-              alt="actor photo"
+              alt="actor"
             />
             <p>{actor.name}</p>
             <p>Character: {actor.character}</p>
