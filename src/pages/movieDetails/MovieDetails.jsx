@@ -34,14 +34,14 @@ const MovieDetails = () => {
   });
 
   const location = useLocation();
-  //console.log(location.state);
-   const backLinkHref = location.state?.from ?? '/';
+  const backLinkHref = location.state?.from ?? '/?query=';
 
   return (
     <div className={css.container}>
       <BackLink to={backLinkHref}>
         &#x2190; Go back
       </BackLink>
+
       <div className={css.movieDetails}>
         <img className={css.poster} src={imageUrl} alt="movie poster" />
         <div>
@@ -63,10 +63,14 @@ const MovieDetails = () => {
         <h4>Additional information</h4>
         <ul>
           <li>
-            <Link to="cast">Cast</Link>
+            <Link to="cast" state={{ from: location }}>
+              Cast
+            </Link>
           </li>
           <li>
-            <Link to="reviews">Reviews</Link>
+            <Link to="reviews" state={{ from: location }}>
+              Reviews
+            </Link>
           </li>
         </ul>
         <Outlet />
