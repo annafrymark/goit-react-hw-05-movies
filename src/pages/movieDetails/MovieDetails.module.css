@@ -1,12 +1,18 @@
-.container{
-    padding: 20px;
+.container {
+  padding: 20px;
 }
 
-.movieDetails{
-    display: flex;
-    align-items: flex-start;
+.movieDetails {
+  display: flex;
+  align-items: flex-start;
 }
 
-.poster{
-     padding: 10px;
+.poster {
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.genres{
+    display: inline;
+    justify-content: space-around;
 }

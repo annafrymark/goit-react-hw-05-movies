@@ -23,9 +23,9 @@ const Home = () => {
     <div className={css.container}>
       <h1 className={css.title}>Trending Today</h1>
       {error && <div>{error.message}</div>}
-      <ul>
+      <ul className={css.movieList}>
         {trendingMovies.map(movie => (
-          <li key={movie.id}>
+          <li key={movie.id} className={css.movieLink}>
             <Link to={`movies/${movie.id}`}>{movie.name || movie.title}</Link>
           </li>
         ))}

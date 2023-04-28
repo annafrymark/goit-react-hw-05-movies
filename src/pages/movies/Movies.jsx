@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { fetchMoviesWithQuery } from 'utils/GetInfo';
 import { Link, useSearchParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import css from './Movies.module.css';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const [error, setError] = useState(null);
+  const location = useLocation();
 
   useEffect(() => {
     const searchMovies = async () => {
@@ -46,14 +48,15 @@ const Movies = () => {
         </button>
       </form>
       {error && <div>{error.message}</div>}
-      <ul>
+      <ul className={css.movieList}>
         {movies.map(movie => (
           <li key={movie.id}>
             <Link
-              state={{
-                from: `/goit-react-hw-05-movies/movies?${searchParams}`,
-              }}
               to={`${movie.id}`}
+              state={{
+                from: location,
+                // from: `/goit-react-hw-05-movies/movies?${searchParams}`,
+              }}
             >
               {movie.name || movie.title}
             </Link>
