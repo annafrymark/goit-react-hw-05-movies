@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/339.3be80b1c.chunk.css","mappings":"AAAA,wBACI,YAAa,CACb,cAAe,CACf,QAAS,CACT,eACJ,CAEA,mBACI,sCACJ","sources":["pages/cast/Cast.module.css"],"sourcesContent":[".actorsList{\n    display: flex;\n    flex-wrap: wrap;\n    gap: 10px;\n    list-style: none;\n}\n\n.actor{\n    flex-basis: calc((100% - 20px)/3);\n}"],"names":[],"sourceRoot":""}
