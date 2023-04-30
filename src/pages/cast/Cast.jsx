@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchCastWithMovieId } from 'utils/GetInfo';
+import css from './Cast.module.css';
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -28,9 +29,9 @@ const Cast = () => {
 
   return (
     <div>
-      <ul>
+      <ul className={css.actorsList}>
         {cast.map(actor => (
-          <li key={actor.id}>
+          <li key={actor.id} className={css.actor}>
             <img
               src={
                 actor.profile_path

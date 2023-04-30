@@ -1,0 +1,10 @@
+.actorsList{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+}
+
+.actor{
+    flex-basis: calc((100% - 20px)/3);
+}
